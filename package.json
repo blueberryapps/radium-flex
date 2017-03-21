@@ -22,5 +22,12 @@
       "tsx",
       "js"
     ]
+  },
+  "devDependencies": {
+    "@types/jest": "^19.2.2",
+    "jest": "^19.0.2",
+    "ts-jest": "^19.0.2",
+    "tslint": "^4.5.1",
+    "typescript": "^2.2.1"
   }
 }
