@@ -1,6 +1,6 @@
 {
   "name": "radium-flex",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "main": "lib/index.js",
   "typings": "lib/index",
   "repository": "https://github.com/blueberryapps/radium-flex",
@@ -27,6 +27,10 @@
       "tsx",
       "js"
     ]
+  },
+  "peerDependencies": {
+    "react": ">=13",
+    "radium": ">=0.16"
   },
   "devDependencies": {
     "@types/jest": "^19.2.2",

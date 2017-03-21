@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-interface ContainerProps {
+export interface ContainerProps {
   width: string;
   paddingLeft: string;
   paddingRight: string;

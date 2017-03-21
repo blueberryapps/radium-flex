@@ -3,7 +3,7 @@ import * as React from 'react';
 import { columns, debugStyle, defaultGap, mediaQueries } from './styles';
 import { BoxProps, ColumnSize, FlexProps, MediaQueryKey } from './types';
 
-class Box extends React.PureComponent<Partial<BoxProps & FlexProps>, void> {
+export class Box extends React.PureComponent<Partial<BoxProps & FlexProps>, void> {
   static defaultProps = {
     direction: 'row',
     wrap: 'wrap',

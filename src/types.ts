@@ -1,4 +1,4 @@
-type BreakpointKey = 'xs' | 'ms' | 'sm' | 'md' | 'lg';
+export type BreakpointKey = 'xs' | 'ms' | 'sm' | 'md' | 'lg';
 export type Breakpoints = {[K in BreakpointKey] : number};
 
 export type MediaQueryKey = BreakpointKey | 'col';

@@ -3,7 +3,7 @@ import * as React from 'react';
 import { defaultGap } from './styles';
 import { FlexProps } from './types';
 
-class Flex extends React.PureComponent<FlexProps, void> {
+export class Flex extends React.PureComponent<FlexProps, void> {
   static defaultProps = {
     direction: 'row',
     wrap: 'wrap',
