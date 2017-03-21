@@ -6,11 +6,12 @@
   "author": "ondrejbartas",
   "license": "MIT",
   "scripts": {
-    "test": "jest",
+    "test": "yarn tslint && yarn jest",
+    "jest": "jest",
     "tslint": "tslint 'src/**/*.ts?(x)'",
     "compile": "tsc",
     "cleanupBuild": "rm -rf ./lib",
-    "prepublish": "yarn tslint && yarn test && yarn cleanupBuild && yarn compile"
+    "prepublish": "yarn test && yarn cleanupBuild && yarn compile"
   },
   "jest": {
     "transform": {
