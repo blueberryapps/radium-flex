@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should render Flex with default style 1`] = `
+<div
+  data-radium="true"
+  style="display:flex;flex-direction:row;flex-wrap:wrap;justify-content:flex-start;align-items:stretch;align-content:stretch;"
+>
+  <div
+    data-radium="true"
+    style="display:block;align-self:auto;flex-grow:0;flex-shrink:1;box-sizing:border-box;width:100%;"
+  >
+    content
+  </div>
+</div>
+`;
