@@ -4,5 +4,23 @@
   "main": "lib/index.js",
   "repository": "https://github.com/blueberryapps/radium-flex",
   "author": "ondrejbartas",
-  "license": "MIT"
+  "license": "MIT",
+  "scripts": {
+    "test": "jest",
+    "tslint": "tslint 'src/**/*.ts?(x)'",
+    "compile": "tsc",
+    "cleanupBuild": "rm -rf ./lib",
+    "prepublish": "yarn tslint && yarn test && yarn cleanupBuild && yarn compile"
+  },
+  "jest": {
+    "transform": {
+      ".(ts|tsx)": "<rootDir>/node_modules/ts-jest/preprocessor.js"
+    },
+    "testRegex": "/__tests__/.*\\.spec\\.(ts|tsx)$",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js"
+    ]
+  }
 }
