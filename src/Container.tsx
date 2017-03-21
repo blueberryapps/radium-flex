@@ -1,9 +1,21 @@
 import * as React from 'react';
 
-export default class Container extends React.PureComponent<void, void> {
+interface ContainerProps {
+  width: string;
+  paddingLeft: string;
+  paddingRight: string;
+}
+
+export default class Container extends React.PureComponent<ContainerProps, void> {
+  static defaultProps = {
+    width: 'auto',
+    paddingLeft: '15px',
+    paddingRight: '15px'
+  };
+
   render() {
     const { children } = this.props;
-    const style = this.getStyle(Container.style);
+    const style = this.style(this.props);
 
     return (
       <div style={style}>
@@ -12,10 +24,10 @@ export default class Container extends React.PureComponent<void, void> {
     );
   }
 
-  static style = ({ sizes }) => ({
-    width: sizes.container,
-    paddingLeft: sizes.medium,
-    paddingRight: sizes.medium,
+  style = ({ width, paddingLeft, paddingRight }: ContainerProps) => ({
+    width,
+    paddingLeft,
+    paddingRight,
     marginLeft: 'auto',
     marginRight: 'auto',
   })

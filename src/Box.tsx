@@ -4,7 +4,7 @@ import { columns, debugStyle, defaultGap, mediaQueries } from './styles';
 import { BoxProps, ColumnSize, FlexProps, MediaQueryKey } from './types';
 
 class Box extends React.PureComponent<Partial<BoxProps & FlexProps>, void> {
-  static defaultProps: BoxProps & FlexProps = {
+  static defaultProps = {
     direction: 'row',
     wrap: 'wrap',
     self: 'auto',
@@ -12,12 +12,11 @@ class Box extends React.PureComponent<Partial<BoxProps & FlexProps>, void> {
     shrink: 1,
     gap: 0,
     debug: false,
-    to: '',
   };
 
   render () {
     const { children } = this.props;
-    const { className, style, testId, to } = this.props as BoxProps & FlexProps;
+    const { className, style, testId } = this.props as BoxProps & FlexProps;
 
     return (
       <div className={className} data-test={testId} style={[this.columns(), this.styles(), style]}>
