@@ -12,3 +12,10 @@ test:
   override:
     - yarn tslint
     - yarn test
+
+deployment:
+  create_release_branch:
+    branch:
+      - master
+    commands:
+      - publish
