@@ -5,6 +5,8 @@ import { BoxProps, ColumnSize, FlexProps, MediaQueryKey } from './types';
 
 export const ReactComponent = React.PureComponent || React.Component;
 export const orderedBreakpoints = ['col', 'xs', 'ms', 'sm', 'md', 'lg'];
+export type Breakpoints = 'col' | 'xs' | 'ms' | 'sm' | 'md' | 'lg';
+
 export const defaultProps = {
   direction: 'row',
   wrap: 'wrap',
@@ -14,6 +16,15 @@ export const defaultProps = {
   gap: 0,
   col: 12 as ColumnSize,
   debug: false,
+};
+
+export const calculateColumnWidth = (props: BoxProps, size: Breakpoints): ColumnSize => {
+  const result = orderedBreakpoints.slice(0, orderedBreakpoints.indexOf(size) + 1).reduce(
+    (acc, breakpoint) => (typeof props[breakpoint] === 'number' ? props[breakpoint] : acc),
+    props.col
+  );
+
+  return typeof result === 'number' ? result : defaultProps.col;
 };
 
 export class Box extends ReactComponent<Partial<BoxProps & FlexProps>, void> {
@@ -30,11 +41,9 @@ export class Box extends ReactComponent<Partial<BoxProps & FlexProps>, void> {
     );
   }
 
-  getColumnSize(level: string): ColumnSize {
-    return orderedBreakpoints.slice(0, orderedBreakpoints.indexOf(level) + 1).reduce(
-      (acc, breakpoint) => (typeof this.props[breakpoint] === 'number' ? this.props[breakpoint] : acc),
-      this.props.col
-    ) || defaultProps.col;
+  getColumnSize(size: Breakpoints): ColumnSize {
+    const { col, xs, ms, sm, md, lg } = this.props;
+    return calculateColumnWidth({ col, xs, ms, sm, md, lg } as BoxProps, size);
   }
 
   columns(): React.CSSProperties[] {
