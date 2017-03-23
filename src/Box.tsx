@@ -31,8 +31,8 @@ export class Box extends ReactComponent<Partial<BoxProps & FlexProps>, void> {
   }
 
   getColumnSize(level: string): ColumnSize {
-    return orderedBreakpoints.slice(orderedBreakpoints.indexOf(level)).reduce(
-      (acc, breakpoint) => ( acc || (typeof this.props[breakpoint] === 'number' && this.props[breakpoint])),
+    return orderedBreakpoints.slice(0, orderedBreakpoints.indexOf(level) + 1).reduce(
+      (acc, breakpoint) => (typeof this.props[breakpoint] === 'number' ? this.props[breakpoint] : acc),
       this.props.col
     ) || defaultProps.col;
   }
