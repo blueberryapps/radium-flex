@@ -4,17 +4,20 @@ import { columns, debugStyle, defaultGap, mediaQueries } from './styles';
 import { BoxProps, ColumnSize, FlexProps, MediaQueryKey } from './types';
 
 export const ReactComponent = React.PureComponent || React.Component;
+export const orderedBreakpoints = ['col', 'xs', 'ms', 'sm', 'md', 'lg'];
+export const defaultProps = {
+  direction: 'row',
+  wrap: 'wrap',
+  self: 'auto',
+  grow: 0,
+  shrink: 1,
+  gap: 0,
+  col: 12 as ColumnSize,
+  debug: false,
+};
 
 export class Box extends ReactComponent<Partial<BoxProps & FlexProps>, void> {
-  static defaultProps = {
-    direction: 'row',
-    wrap: 'wrap',
-    self: 'auto',
-    grow: 0,
-    shrink: 1,
-    gap: 0,
-    debug: false,
-  };
+  static defaultProps = defaultProps;
 
   render () {
     const { children } = this.props;
@@ -27,10 +30,16 @@ export class Box extends ReactComponent<Partial<BoxProps & FlexProps>, void> {
     );
   }
 
+  getColumnSize(level: string): ColumnSize {
+    return orderedBreakpoints.slice(orderedBreakpoints.indexOf(level)).reduce(
+      (acc, breakpoint) => ( acc || (typeof this.props[breakpoint] === 'number' && this.props[breakpoint])),
+      this.props.col
+    ) || defaultProps.col;
+  }
+
   columns(): React.CSSProperties[] {
-    return ['col', 'xs', 'ms', 'sm', 'md', 'lg']
-      .filter((breakpoint: MediaQueryKey) => typeof this.props[breakpoint] === 'number')
-      .map((breakpoint: MediaQueryKey) => this.getColumnStyle(breakpoint, (this.props[breakpoint] as ColumnSize)));
+    return orderedBreakpoints
+      .map((breakpoint: MediaQueryKey) => this.getColumnStyle(breakpoint, this.getColumnSize(breakpoint)));
   }
 
   getColumnStyle(breakpoint: MediaQueryKey, columns: ColumnSize): React.CSSProperties {

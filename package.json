@@ -1,6 +1,6 @@
 {
   "name": "radium-flex",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "main": "lib/index.js",
   "typings": "lib/index",
   "repository": "https://github.com/blueberryapps/radium-flex",

@@ -3,8 +3,13 @@
 exports[`should render Box with default style 1`] = `
 <div
   data-radium="true"
-  style="display:block;align-self:auto;flex-grow:0;flex-shrink:1;box-sizing:border-box;width:100%;"
 >
-  content
+  <div
+    class="rmq-ce8f0f0d rmq-d31490d2 rmq-ed672573 rmq-5385cdb1 rmq-c847798b rmq-fe61d09d"
+    data-radium="true"
+    style="display:block;align-self:auto;flex-grow:0;flex-shrink:1;box-sizing:border-box;width:100%;"
+  >
+    content
+  </div>
 </div>
 `;
