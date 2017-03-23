@@ -3,7 +3,7 @@ import * as React from 'react';
 import { defaultGap } from './styles';
 import { FlexProps } from './types';
 
-const ReactComponent = React.PureComponent || React.Component;
+export const ReactComponent = React.PureComponent || React.Component;
 
 export class Flex extends ReactComponent<FlexProps, void> {
   static defaultProps = {

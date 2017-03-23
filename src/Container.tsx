@@ -6,7 +6,7 @@ export interface ContainerProps {
   paddingRight: string;
 }
 
-const ReactComponent = React.PureComponent || React.Component;
+export const ReactComponent = React.PureComponent || React.Component;
 
 export default class Container extends ReactComponent<ContainerProps, void> {
   static defaultProps = {

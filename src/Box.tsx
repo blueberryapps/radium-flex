@@ -3,7 +3,7 @@ import * as React from 'react';
 import { columns, debugStyle, defaultGap, mediaQueries } from './styles';
 import { BoxProps, ColumnSize, FlexProps, MediaQueryKey } from './types';
 
-const ReactComponent = React.PureComponent || React.Component;
+export const ReactComponent = React.PureComponent || React.Component;
 
 export class Box extends ReactComponent<Partial<BoxProps & FlexProps>, void> {
   static defaultProps = {
