@@ -1,5 +1,5 @@
 import { render } from 'enzyme';
-import { StyleRoot } from 'radium';
+import  { StyleRoot } from 'radium';
 import * as React from 'react';
 import { Box, Flex } from '../index';
 
