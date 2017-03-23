@@ -14,10 +14,10 @@ export const breakpoints: Breakpoints = {
 
 export const mediaQueries: MediaQueries = {
   col: '@media all',
-  xs: `@media (min-width: ${breakpoints.xs}px) and (min-width: ${breakpoints.ms - 1}px)`,
-  ms: `@media (min-width: ${breakpoints.ms}px) and (min-width: ${breakpoints.sm - 1}px)`,
-  sm: `@media (min-width: ${breakpoints.sm}px) and (min-width: ${breakpoints.md - 1}px)`,
-  md: `@media (min-width: ${breakpoints.md}px) and (min-width: ${breakpoints.lg - 1}px)`,
+  xs: `@media (min-width: ${breakpoints.xs}px) and (max-width: ${breakpoints.ms - 1}px)`,
+  ms: `@media (min-width: ${breakpoints.ms}px) and (max-width: ${breakpoints.sm - 1}px)`,
+  sm: `@media (min-width: ${breakpoints.sm}px) and (max-width: ${breakpoints.md - 1}px)`,
+  md: `@media (min-width: ${breakpoints.md}px) and (max-width: ${breakpoints.lg - 1}px)`,
   lg: `@media (min-width: ${breakpoints.lg}px)`,
 };
 
