@@ -20,7 +20,7 @@ export class Flex extends ReactComponent<FlexProps, void> {
     const { className, children, debug, gap, style } = this.props;
 
     const childrenWithGap = React.Children.map(children, (child: any) =>
-      React.cloneElement(child, { gap, debug }),
+      child && React.cloneElement(child, { gap, debug }),
     );
 
     return (
