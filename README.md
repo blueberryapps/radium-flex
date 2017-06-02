@@ -1,4 +1,4 @@
-# Radium-Flex
+# Radium-Flex [![Dependency Status](https://dependencyci.com/github/blueberryapps/radium-flex/badge)](https://dependencyci.com/github/blueberryapps/radium-flex)
 
 Implementation of flex grind by react and radium.
 
