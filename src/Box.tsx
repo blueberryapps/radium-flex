@@ -1,24 +1,24 @@
 import * as Radium from 'radium';
 import * as React from 'react';
-import { columns, debugStyle, defaultGap, mediaQueries } from './styles';
-import { BoxProps, ColumnSize, FlexProps, MediaQueryKey } from './types';
+import { columns as columnsStyle, debugStyle, defaultGap, mediaQueries } from './styles';
+import { BoxProps, FlexProps, MediaQueryKey } from './types';
 
 export const ReactComponent = React.PureComponent || React.Component;
 export const orderedBreakpoints = ['col', 'xs', 'ms', 'sm', 'md', 'lg'];
 export type Breakpoints = 'col' | 'xs' | 'ms' | 'sm' | 'md' | 'lg';
 
 export const defaultProps = {
-  direction: 'row',
-  wrap: 'wrap',
-  self: 'auto',
-  grow: 0,
-  shrink: 1,
-  gap: 0,
-  col: 12 as ColumnSize,
+  col: 12,
   debug: false,
+  direction: 'row',
+  gap: 0,
+  grow: 0,
+  self: 'auto',
+  shrink: 1,
+  wrap: 'wrap',
 };
 
-export const calculateColumnWidth = (props: BoxProps, size: Breakpoints): ColumnSize => {
+export const calculateColumnWidth = (props: BoxProps, size: Breakpoints): number => {
   const result = orderedBreakpoints.slice(0, orderedBreakpoints.indexOf(size) + 1).reduce(
     (acc, breakpoint) => (typeof props[breakpoint] === 'number' ? props[breakpoint] : acc),
     props.col
@@ -30,7 +30,7 @@ export const calculateColumnWidth = (props: BoxProps, size: Breakpoints): Column
 export class Box extends ReactComponent<Partial<BoxProps & FlexProps>, void> {
   static defaultProps = defaultProps;
 
-  render () {
+  render() {
     const { children } = this.props;
     const { className, style, testId } = this.props as BoxProps & FlexProps;
 
@@ -41,7 +41,7 @@ export class Box extends ReactComponent<Partial<BoxProps & FlexProps>, void> {
     );
   }
 
-  getColumnSize(size: Breakpoints): ColumnSize {
+  getColumnSize(size: Breakpoints): number {
     const { col, xs, ms, sm, md, lg } = this.props;
     return calculateColumnWidth({ col, xs, ms, sm, md, lg } as BoxProps, size);
   }
@@ -51,19 +51,20 @@ export class Box extends ReactComponent<Partial<BoxProps & FlexProps>, void> {
       .map((breakpoint: MediaQueryKey) => this.getColumnStyle(breakpoint, this.getColumnSize(breakpoint)));
   }
 
-  getColumnStyle(breakpoint: MediaQueryKey, columns: ColumnSize): React.CSSProperties {
-    return { [`${mediaQueries[breakpoint]}`] : this.getColumnWidth(columns) };
+  getColumnStyle(breakpoint: MediaQueryKey, columns: number): React.CSSProperties {
+    return { [`${mediaQueries[breakpoint]}`]: this.getColumnWidth(columns) };
   }
 
   getColumnWidth(column: number): React.CSSProperties {
-    const { flex } = this.props;
+    const { flex, columns } = this.props;
     const { floor } = Math;
+    const colCount = columns || columnsStyle;
 
     if (column === 0) {
       return { width: 0, display: 'none' };
     }
 
-    const width: number = column > 0 ? (floor(100000 / columns * column) / 1000) : 100;
+    const width: number = column > 0 ? (floor(100000 / colCount * column) / 1000) : 100;
 
     return { width: `${width}%`, display: flex ? 'flex' : 'block' };
   }
