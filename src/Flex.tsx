@@ -7,20 +7,21 @@ export const ReactComponent = React.PureComponent || React.Component;
 
 export class Flex extends ReactComponent<FlexProps, void> {
   static defaultProps = {
-    direction: 'row',
-    wrap: 'wrap',
-    justify: 'flex-start',
     align: 'stretch',
+    columns: 12,
     content: 'stretch',
-    gap: 0,
     debug: false,
+    direction: 'row',
+    gap: 0,
+    justify: 'flex-start',
+    wrap: 'wrap',
   };
 
-  render () {
-    const { className, children, debug, gap, style } = this.props;
+  render() {
+    const { className, children, debug, gap, style, columns } = this.props;
 
     const childrenWithGap = React.Children.map(children, (child: any) =>
-      child && React.cloneElement(child, { gap, debug }),
+      child && React.cloneElement(child, { columns, gap, debug }),
     );
 
     return (
