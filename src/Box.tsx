@@ -27,7 +27,7 @@ export const calculateColumnWidth = (props: BoxProps, size: Breakpoints): number
   return typeof result === 'number' ? result : defaultProps.col;
 };
 
-export class Box extends ReactComponent<Partial<BoxProps & FlexProps>, void> {
+export class Box extends ReactComponent<Partial<BoxProps & FlexProps>, {}> {
   static defaultProps = defaultProps;
 
   render() {

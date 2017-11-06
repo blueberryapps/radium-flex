@@ -1,8 +1,11 @@
-import { render } from 'enzyme';
+import { configure, render } from 'enzyme';
+import * as Adapter from 'enzyme-adapter-react-16';
 import  { StyleRoot } from 'radium';
 import * as React from 'react';
 import Box, { Breakpoints, calculateColumnWidth } from '../Box';
 import { BoxProps } from '../types';
+
+configure({ adapter: new Adapter() });
 
 it('should render Box with default style', () => {
   expect(render(<StyleRoot><Box>content</Box></StyleRoot>)).toMatchSnapshot();

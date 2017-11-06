@@ -5,7 +5,7 @@ import { FlexProps } from './types';
 
 export const ReactComponent = React.PureComponent || React.Component;
 
-export class Flex extends ReactComponent<FlexProps, void> {
+export class Flex extends ReactComponent<FlexProps, {}> {
   static defaultProps = {
     align: 'stretch',
     columns: 12,
