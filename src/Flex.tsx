@@ -1,4 +1,4 @@
-import * as Radium from 'radium';
+import Radium from 'radium';
 import * as React from 'react';
 import { defaultGap } from './styles';
 import { FlexProps } from './types';
@@ -25,7 +25,7 @@ export class Flex extends ReactComponent<FlexProps, {}> {
     );
 
     return (
-      <div className={className} style={[this.styles(), style]}>{childrenWithGap}</div>
+      <div className={className} style={[this.styles(), style] as any}>{childrenWithGap}</div>
     );
   }
 

@@ -1,6 +1,6 @@
 import { configure, render } from 'enzyme';
 import * as Adapter from 'enzyme-adapter-react-16';
-import  { StyleRoot } from 'radium';
+import Radium from 'radium';
 import * as React from 'react';
 import Box, { Breakpoints, calculateColumnWidth } from '../Box';
 import { BoxProps } from '../types';
@@ -8,7 +8,7 @@ import { BoxProps } from '../types';
 configure({ adapter: new Adapter() });
 
 it('should render Box with default style', () => {
-  expect(render(<StyleRoot><Box>content</Box></StyleRoot>)).toMatchSnapshot();
+  expect(render(<Radium.StyleRoot><Box>content</Box></Radium.StyleRoot>)).toMatchSnapshot();
 });
 
 describe('calculate column width', () => {
