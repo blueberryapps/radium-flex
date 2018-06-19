@@ -1,4 +1,4 @@
-import * as Radium from 'radium';
+import Radium from 'radium';
 import * as React from 'react';
 import { columns as columnsStyle, debugStyle, defaultGap, mediaQueries } from './styles';
 import { BoxProps, FlexProps, MediaQueryKey } from './types';
@@ -35,7 +35,7 @@ export class Box extends ReactComponent<Partial<BoxProps & FlexProps>, {}> {
     const { className, style, testId } = this.props as BoxProps & FlexProps;
 
     return (
-      <div className={className} data-test={testId} style={[this.columns(), this.styles(), style]}>
+      <div className={className} data-test={testId} style={[this.columns(), this.styles(), style] as any}>
         {children}
       </div>
     );
@@ -92,7 +92,7 @@ export class Box extends ReactComponent<Partial<BoxProps & FlexProps>, {}> {
       ...flexStyles,
       ...gapStyles,
       ...debugStyles,
-    };
+    } as React.CSSProperties;
   }
 }
 

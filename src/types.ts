@@ -29,7 +29,7 @@ export interface BoxProps {
   testId?: string;
   routerLink?: boolean;
   to: string;
-};
+}
 
 export interface FlexProps {
   className?: string;
@@ -58,4 +58,4 @@ export interface FlexProps {
   'space-between' |
   'flex-start' |
   'flex-end';
-};
+}

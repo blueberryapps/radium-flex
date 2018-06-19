@@ -67,4 +67,4 @@ export default class ExampleFlex extends React.Component<{}, {}> {
       </div>
     );
   }
-};
+}
